@@ -1,29 +1,40 @@
 //Practice 2
-// 1. Crea una lista llamada "lista" con los elementos "rojo", "blanco", "negro"
+
+// EXERCISE #1 
+// Create a list called "list" with the elements "red", "white", "black"
 val lista = List("rojo","blanco","negro")
 lista.toSet
-// 2. Añadir 5 elementos mas a "lista" "verde" ,"amarillo", "azul", "naranja", "perla"
+
+// EXERCISE #2
+// Add 5 more items to "list" "green", "yellow", "blue", "orange", "pearl"
 val lista_1 = "verde" :: lista
 val lista_2 = "amarillo" :: lista_1
 var lista_3 = "azul" :: lista_2
 var lista_4 = "naranja" :: lista_3
 var lista_5 = "perla" :: lista_4
-// 3. Traer los elementos de "lista" "verde", "amarillo", "azul"
+
+// EXERCISE #3
+//Bring the items from "list" "green", "yellow", "blue"
 val resultado = lista_5.slice(2,5) 
 print (resultado)
-// 4. Crea un arreglo de numero en rango del 1-1000 en pasos de 5 en 5
+
+// EXERCISE #4
+// Create an array of numbers in the range 1-1000 in steps of 5 by 5
 val array_num = 5 to 1000 by 5
 
-// 5. Cuales son los elementos unicos de la lista Lista(1,3,3,4,6,7,3,7) utilice conversion a conjuntos
+// EXERCISE #5
+//What are the unique elements of the list List (1,3,3,4,6,7,3,7) use conversion to sets
 val lista = List (1,3,3,4,6,7,3,7)
 lista.toSet
 
-// 6. Crea una mapa mutable llamado nombres que contenga los siguiente
-//     "Jose", 20, "Luis", 24, "Ana", 23, "Susana", "27"
+// EXERCISE #6
+// Create a mutable map named names that contains the following: "Jose", 20, "Luis", 24, "Ana", 23, "Susana", "27"
 val mapa = collection.mutable.Map(("Jose", 20), ("Luis", 24), ("Ana", 23), ("Susana", "27"))
 
-// 6 a . Imprime todas la llaves del mapa
+// EXERCISE #6.a
+// Print all keys on the map
 mapa.keys
 
-// 7 b . Agrega el siguiente valor al mapa("Miguel", 23)
+// EXERCISE #7.b
+// Add the following value to the map ("Miguel", 23)
 mapa += ("Miguel" -> 23)
