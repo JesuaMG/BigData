@@ -1,6 +1,8 @@
 // Assessment 1/Practica 1
 
-//1. Desarrollar un algoritmo en scala que calcule el radio de un circulo
+// EXERCISE #1
+// Develop a scala algorithm that calculates the radius of a circle
+ 
 var radio: Double = 0;
 
 def radioPerimetro (perimetro:Double): Unit = {
@@ -13,7 +15,9 @@ def radioArea (area:Double): Unit = {
     println(f"El radio de un circulo de area: $area%1.2f es $radio%1.3f");
 }
 
-//2. Desarrollar un algoritmo en scala que me diga si un numero es primo
+// EXERCISE #2
+// Develop an algorithm in scala that tells me if a number is prime
+
 def isPrime(i :Int) : Boolean = {
      if (i <= 1)
        false
@@ -25,26 +29,29 @@ def isPrime(i :Int) : Boolean = {
 
 (1 to 100).foreach(i => if (isPrime(i)) println("%d es numero primo.".format(i)))
 
-//3. Dada la variable bird = "tweet", utiliza interpolacion de string para
-//   imprimir "Estoy ecribiendo un tweet"
+// EXERCISE #3
+// Given the variable bird = "tweet", use string interpolation to print "I'm writing a tweet"
+
 var bird :String = "tweet";
 println(f"Estoy escribiendo un $bird%s");
 
-//4. Dada la variable mensaje = "Hola Luke yo soy tu padre!" utiliza slilce para extraer la
-//   secuencia "Luke"
+// EXERCISE #4
+// Given the variable message = "Hello Luke, I am your father!" use slice to extract the sequence "Luke"
 val mensaje = ("Hola Luke yo soy tu padre!")
 mensaje.slilce(5,9)
 
-//5. Cual es la diferencia entre value y una variable en scala?
-//  val (vlaue) son constantes lo qeu significa que no podemos modificar el valor de esta,
-//  mintras var (variable) si podemos modificar su valor a lo largo del programa
+// EXERCISE #5
+// What is the difference between value and a variable in scala?
+// val (value) are constant which means that we cannot modify its value, while var (variable) if we can 
+// modify its value throughout the program
 val constante : Int = 5;
 var variable : Int = 5;
 
 constante = 6; //error: reassignment to val
 variable = 6; 
 
-//6. Dada la tupla (2,4,5,1,2,3,3.1416,23) regresa el numero 3.1416 
+// EXERCISE #6
+// Given the tuple (2,4,5,1,2,3,3.1416,23) returns the number 3.1416
 val tupla1 = (2,4,5,1,2,3,3.1416,23)
 tupla1._7
 
