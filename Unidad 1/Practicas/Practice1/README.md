@@ -4,7 +4,7 @@
 
 Develop a scala algorithm that calculates the radius of a circle
 
-'''
+``` scala
 var radio: Double = 0;
 
 def radioPerimetro (perimetro:Double): Unit = {
@@ -16,13 +16,13 @@ def radioArea (area:Double): Unit = {
     radio = math.sqrt(area * 3.1416);
     println(f"El radio de un circulo de area: $area%1.2f es $radio%1.3f");
 }
-'''
+``` scala
 
 ### Exercise 2
 
 Develop an algorithm in scala that tells me if a number is prime
 
-'''
+``` scala
 def isPrime(i :Int) : Boolean = {
      if (i <= 1)
        false
@@ -33,25 +33,25 @@ def isPrime(i :Int) : Boolean = {
    }
 
 (1 to 100).foreach(i => if (isPrime(i)) println("%d es numero primo.".format(i)))
-'''
+``` scala
 
 ### Exercise 3
 
 Given the variable bird = "tweet", use string interpolation to print "I'm writing a tweet"
 
-'''
+``` scala
 var bird :String = "tweet";
 println(f"Estoy escribiendo un $bird%s");
-'''
+``` scala
 
 ### Exercise 4
 
 Given the variable message = "Hello Luke, I am your father!" use slice to extract the sequence "Luke"
 
-'''
+``` scala
 val mensaje = ("Hola Luke yo soy tu padre!")
 mensaje.slilce(5,9)
-'''
+``` scala
 
 ### Exercise 5
 
@@ -62,11 +62,11 @@ What is the difference between value and a variable in scala?
 
 Given the tuple (2,4,5,1,2,3,3.1416,23) returns the number 3.1416
 
-'''
+``` scala
 val tupla1 = (2,4,5,1,2,3,3.1416,23)
 tupla1._7
 
 mutmap.values
 mutmap.keys
 mutmap 
-'''
+``` scala
