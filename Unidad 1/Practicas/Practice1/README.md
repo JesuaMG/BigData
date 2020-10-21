@@ -16,7 +16,7 @@ def radioArea (area:Double): Unit = {
     radio = math.sqrt(area * 3.1416);
     println(f"El radio de un circulo de area: $area%1.2f es $radio%1.3f");
 }
-``` scala
+```
 
 ### Exercise 2
 
@@ -33,7 +33,7 @@ def isPrime(i :Int) : Boolean = {
    }
 
 (1 to 100).foreach(i => if (isPrime(i)) println("%d es numero primo.".format(i)))
-``` scala
+```
 
 ### Exercise 3
 
@@ -42,7 +42,7 @@ Given the variable bird = "tweet", use string interpolation to print "I'm writin
 ``` scala
 var bird :String = "tweet";
 println(f"Estoy escribiendo un $bird%s");
-``` scala
+``` 
 
 ### Exercise 4
 
@@ -51,7 +51,7 @@ Given the variable message = "Hello Luke, I am your father!" use slice to extrac
 ``` scala
 val mensaje = ("Hola Luke yo soy tu padre!")
 mensaje.slilce(5,9)
-``` scala
+```
 
 ### Exercise 5
 
