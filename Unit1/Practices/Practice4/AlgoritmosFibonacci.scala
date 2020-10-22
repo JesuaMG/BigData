@@ -1,6 +1,5 @@
 //Fibonacci sequence algorithms
 
-
 // #Algorithm #1
 // #Descending recursive version
 

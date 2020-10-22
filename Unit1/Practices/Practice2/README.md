@@ -70,5 +70,3 @@ Add the following value to the map ("Miguel", 23)
 ``` scala
 mapa += ("Miguel" -> 23)
 ```
-
-

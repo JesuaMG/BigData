@@ -1,8 +1,9 @@
-# Pracice 4 Fibonacci sequence algorithms
+//Fibonacci sequence algorithms
 
-### Algorithm #1
-Descending recursive version
-```scala
+
+// #Algorithm #1
+// #Descending recursive version
+
 def fib1(n:Int):Int={
     if(n<2)
     {
@@ -14,11 +15,10 @@ def fib1(n:Int):Int={
     }
     
 }
-```
 
-### Algorithm #2
-Version with explicit formula
-```scala
+// #Algorithm #2
+// #Version with explicit formula
+
 def fib2(n:Int): Double = {
     if(n < 2){
         return n
@@ -29,11 +29,10 @@ def fib2(n:Int): Double = {
         return j
     }
 }
-```
 
-### Algorithm #3
-Iterative version
-```scala
+// #Algorithm #3
+// #Iterative version
+
 def fib3(n:Int): Int = {
     var a = 0
     var b = 1
@@ -45,11 +44,8 @@ def fib3(n:Int): Int = {
     }
     return a
 }
-```
-
-### Algorithm #4
-Iterative version 2 variables
-```scala
+// #Algorithm #4
+// #Iterative version 2 variables
 def fib4(n:Int): Int = {
     var a = 0
     var b = 1
@@ -59,11 +55,11 @@ def fib4(n:Int): Int = {
     }
     return a
 }
-```
 
-### Algorithm #5
-Iterative version vector
-```scala
+
+// #Algorithm #5
+// #Iterative version vector
+
 def fib5(n :Int):Int={
     if(n<2)
     {
@@ -80,6 +76,6 @@ def fib5(n :Int):Int={
             vector(k)=vector(k-1)+vector(k-2)
         }
         return vector(n)
-    }    
+    }
+    
 }
-```

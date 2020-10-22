@@ -19,7 +19,6 @@ def listEvens(list:List[Int]): String ={
     return "Done"
 }
 
-
 // The variables "l" and "l2" are declared where they will be listed where the values to be compared will be saved
 val l = List(1,2,3,4,5,6,7,8)
 val l2 = List(4,3,22,55,7,8)
@@ -27,8 +26,6 @@ val l2 = List(4,3,22,55,7,8)
 // The values of the lists are sent to the function "listEvens"
 listEvens(l)
 listEvens(l2)
-
-
 
 // PSEUDOCODE
 
@@ -66,7 +63,6 @@ def afortunado(list:List[Int]): Int={
 val to f = List (1,7,7)
 println(afortunado(af))
 
-
 // PSEUDOCODE
 
 Proceso afortunado
@@ -81,16 +77,14 @@ Para n <- 0 hasta list
 Fin Ciclo
 
 
-
-
 // Number #3
-//  Esta funcion recibe una lista de enteros y retorna un booleano, se crean dos varibles primera y
-//  segunda, a la varible segunda se le asigna la suma de todos los terminnos en la lista, se itera
-//  la lista por medio de un ciclo for, en cada iteracion a la variable primera se le agraga (suma) el 
-//  valor de la posicion (i) de la lista y a la variable segunda se le resta este mismo valor, luego se 
-//  hace una comparacion para determinar si las varibles (primera y segunda) tienen el mismo valor, si es asi
-//  se devolveria el valor true, pero en caso de recorrer toda la lista y las varialbles nunca fueron 
-//  iguales retornaria un false
+//  This function receives a list of integers and returns a boolean, two "first" variables are created and
+//  "second", the variable "second" is assigned the sum of all the terms in the list, it is iterated
+//  the list by means of a for loop, in each iteration the "first" variable is added the
+//  value of position (i) of the list and the variable "second" is subtracted this same value, then
+//  makes a comparison to determine if the variables ("first" and "second") have the same value, if so
+//  the value true would be returned, but in case of going through the entire list and the varialbles were never
+//  equals would return a false
 def balance(list:List[Int]): Boolean={
     var primera = 0
     var segunda = 0
@@ -117,11 +111,10 @@ balance(bl2)
 balance(bl3)
 
 
-
 // Number #4
-//  Esta funcion lo que hace es recibir un string y retornar un booleano, si la cadena ingrasada
-//  es igual a la palabra pero con el orden invertido entonces devolvera un true, en caso contrario
-//  devuelve un false
+//  What this function does is receive a string and return a boolean, if the string is embedded
+//  is equal to the word but with the order reversed then it will return true, otherwise
+//  returns a false
 def palindromo(palabra:String):Boolean ={
     return (palabra == palabra.reverse)
 }
