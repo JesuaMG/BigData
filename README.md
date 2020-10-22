@@ -10,7 +10,7 @@ Github, Scala Basics commands and Dataframes
 > * [Practice #3](https://github.com/JesuaMG/BigData/blob/Unit_1/Unidad%201/Practicas/Practice3/README.md)
 > * [Practice #4](https://github.com/JesuaMG/BigData/blob/Unit_1/Unidad%201/Practicas/Practice4/README.md)
 
-### Researschs
+### Researchs
 > * [Pair Coding](https://github.com/JesuaMG/BigData/tree/Unit_1/Unit1/Researchs/Pair%20Coding)
 > * [Pearson's Correlation](https://github.com/JesuaMG/BigData/tree/Unit_1/Unit1/Researchs/Pearson's%20Correlation)
 
