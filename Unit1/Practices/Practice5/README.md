@@ -165,6 +165,8 @@ df.where()
 It is used to be able to filter the value to be searched with a field
 
 ```scala
+df.where("Volume=632860")
+
 +-------------------+-----+-----+-----+-----+------+
 |               Date| Open| High|  Low|Close|Volume|
 +-------------------+-----+-----+-----+-----+------+
