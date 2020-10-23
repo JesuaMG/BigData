@@ -2,7 +2,9 @@
 ## Functions with dataframes
 
 ### Number #1
-
+```scala
+df.show()
+```
 Displays the top 20 rows of Dataset in a tabular form.
 
 ``` scala
@@ -37,7 +39,9 @@ only showing top 20 rows
 ```
 
 ### Number #2
-
+```scala
+df.describe()
+```
 Describe certain basic values based on the fields or parameters sent as Average, Minimum, Maximum, etc.
 
 ```scala
@@ -56,7 +60,9 @@ df.describe("high", "close", "volume").show
 ```
 
 ### Number #3
-
+```scala
+df.collectAsList()
+```
 Returns a Java list that contains all rows in this Dataset.
 
 ```scala
@@ -80,7 +86,9 @@ res84: java.util.List[org.apache.spark.sql.Row] =
 ```
 
 ### Number #4
-
+```scala
+df.first()
+```
 Returns the first value of the first row
 
 ```scala
@@ -89,7 +97,9 @@ res85: org.apache.spark.sql.Row = [2006-01-03 00:00:00.0,490.0,493.8,481.1,492.9
 ```
 
 ### Number #5
-
+```scala
+df.head(5)
+```
 Returns the first 5 values of the head
 
 ```scala
@@ -100,7 +110,9 @@ res88: Array[org.apache.spark.sql.Row] = Array([2006-01-03 00:00:00.0,490.0,493.
 ```
 
 ### Number #6
-
+```scala
+df.count()
+```
 Returns the number of rows in the Dataset.
 
 ```scala
@@ -110,7 +122,9 @@ res89: Long = 755
 ```
 
 ### Number #7
-
+```scala
+df.distinct()
+```
 Returns a new Dataset that contains only the unique rows from this Dataset.
 
 ```scala
@@ -145,7 +159,9 @@ only showing top 20 rows
 ```
 
 ### Number #8
-
+```scala
+df.where()
+```
 It is used to be able to filter the value to be searched with a field
 
 ```scala
