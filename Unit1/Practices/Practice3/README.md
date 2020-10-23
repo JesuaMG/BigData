@@ -33,7 +33,7 @@ The values of the lists are sent to the function "listEvens"
 listEvens(l)
 listEvens(l2)
 ```
-SEUDOCODE
+PSEUDOCODE
 
 ```scala
 Proceso listEvens
