@@ -15,8 +15,8 @@ Github, Scala Basics commands and Dataframes
 > * [Pair Coding](https://github.com/JesuaMG/BigData/tree/Unit_1/Unit1/Researchs/Pair%20Coding)
 > * [Pearson's Correlation](https://github.com/JesuaMG/BigData/tree/Unit_1/Unit1/Researchs/Pearson's%20Correlation)
 
+### Evaluation
+> * [Evaluation Practice Unit 1](https://github.com/JesuaMG/BigData/blob/Unit_1/Unit1/Evaluation/README.md)
+
 - Hernandez Negrete Juan Carlos 16212021
 - Manzano Guzman Jesua 16212033
-
-
-
