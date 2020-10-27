@@ -145,6 +145,7 @@ In relation to the dataframe with the CSV, they are stock values or records wher
 
 ## Number #10
 ### What is the maximum and minimum of the “Volume” column?
+To determine the maximum or minimum of a column we must use the select function and the parameter "max" or "min" depending on the case, and to be able to observe the result the "show" function is used.
 ```scala
 df.select(max("Volume")).show()
 
@@ -165,6 +166,7 @@ df.select(min("Volume")).show()
 
 ## Number #11
 ### With Scala / Spark $ Syntax answer the following:                                                           Hint: Basically very similar to the dates session, you will have to create another dataframe to answer some of the items.
+In order to carry out the following exercises it is necessary to import a library (saprk.implicits)
 
 ```scala
 import spark.implicits._
@@ -172,6 +174,7 @@ import spark.implicits._
 
 ## a)
 ### How many days was the “Close” column less than $ 600?
+Para poder obtener el resultado primero debemos saber cuáles elementos de la columna cumplen la condición, para eso usamos “filter” con la condición y para poder determinar el número de elementos que la satisfacen usamos “count”.
 ```scala
 val result = df.filter($"Close" < 600).count()
 
@@ -180,6 +183,7 @@ result: Long = 1218
 
 ## b) 
 ### What percentage of the time was the “High” column greater than $ 500?
+In order to obtain the result, we must first know which elements of the column meet the condition, for that we use the "filter" function with the "High" condition greater than 500 and to determine the number of elements that satisfy it we use "count", then we multiply by 1.0 to be able to obtain the result in double data type, we divide it by the number of data that we obtain with "df.count ()" and finally we multiply by 100.
 ```scala
 val result = (df.filter($"High" > 500).count())*1.0/df.count()*100
 
@@ -188,6 +192,7 @@ result: Double = 4.924543288324067
 
 ## c) 
 ### What is the Pearson correlation between column "High" and column "Volume"?
+To obtain the Pearson correlation, we first have to use the "Select" function with the corr ("High", "Volume") parameter that corresponds to the correlation of both columns and to display the data we use the "show" function.
 ```scala
 df.select(corr("High", "Volume")).show()
 
@@ -200,6 +205,7 @@ df.select(corr("High", "Volume")).show()
 
 ## d) 
 ### What is the maximum in the “High” column per year?
+To determine this, we must first take the value of the year from the date column and put it in a new column, then we have to determine the maximum of each row and group it by year, then we have to select the columns that we are going to show in in this case the year and the maximum of the High column.
 ```scala
 val df2 = df.withColumn("Year", year(df("Date")))
 val df3 = df2.select($"Year", $"High").groupBy("Year").max()
@@ -220,6 +226,7 @@ df3.select($"Year", $"max(High)").show()
 
 ## e) 
 ### What is the “Close” column average for each calendar month?
+This exercise is very similar to the previous one, first we must create a new column with the month of the Date column, then we calculate the average of the columns and group it by the month and finally we select the month column and the column of the average of Close.
 ```scala
 val df2 = df.withColumn("Month", month(df("Date")))
 val df3 = df2.select($"Month", $"Close").groupBy("Month").mean()

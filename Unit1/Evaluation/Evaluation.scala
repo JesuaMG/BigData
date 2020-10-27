@@ -1,7 +1,3 @@
-import org.apache.spark.sql.SparkSession
-val spark = SparkSession.builder().getOrCreate()
-val df = spark.read.option("header", "true").option("inferSchema","true")csv("Netflix_2011_2016.csv")
-
 //1 Start a simple Spark session.
 import org.apache.spark.sql.SparkSession
 val spark = SparkSession.builder().getOrCreate()
@@ -30,7 +26,10 @@ val df2 = df.withColumn("HV Ratio",df("High")/df("Volume"))
 //8 What day had the highest peak in the “Close” column?
 df.orderBy($"High".desc).show(1)
 //9 Write in your own words in a comment of your code. What is the meaning of the Close column "Close"?
-// It is the value with is that it was closed that day
+/* In relation to the dataframe with the CSV, they are stock values or records where the date of 
+    their registration is taken into account, where the entry and exit of these can be considered 
+    with OPEN and CLOSE, that is, how many there were before and after , like HIGH and LOW which 
+    would be the highest and lowest stock. */
 
 //10 What is the maximum and minimum of the “Volume” column?
 df.select(max("Volume")).show()
