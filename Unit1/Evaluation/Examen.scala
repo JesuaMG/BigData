@@ -3,23 +3,32 @@ val spark = SparkSession.builder().getOrCreate()
 val df = spark.read.option("header", "true").option("inferSchema","true")csv("Netflix_2011_2016.csv")
 
 //1 Start a simple Spark session.
+import org.apache.spark.sql.SparkSession
+val spark = SparkSession.builder().getOrCreate()
 
 //2 Upload Netflix Stock CSV file, have Spark infer data types.
+val df = spark.read.option("header","true").option("inferSchema","true").csv("Netflix_2011_2016.csv")
 
 //3 What are the names of the columns?
+df.columns
 
 //4 What is the scheme like?
+df.printSchema()
 
 //5 Print the first 5 columns.
+df.head(5)
 
 //6 Use describe () to learn about the DataFrame.
+df.describe().show()
 
 /*7 Create a new dataframe with a new column called “HV Ratio” which is the relationship 
     between the price in the “High” column versus the “Volume” column of shares traded for a day. 
     (Hint: It is a column operation).*/
 
-//8 What day had the highest peak in the “Close” column?
+val df2 = df.withColumn("HV Ratio",df("High")/df("Volume"))
 
+//8 What day had the highest peak in the “Close” column?
+df.orderBy($"High".desc).show(1)
 //9 Write in your own words in a comment of your code. What is the meaning of the Close column "Close"?
 // It is the value with is that it was closed that day
 
