@@ -166,7 +166,7 @@ df.select(min("Volume")).show()
 
 ## Number #11
 ### With Scala / Spark $ Syntax answer the following:                                                           Hint: Basically very similar to the dates session, you will have to create another dataframe to answer some of the items.
-In order to carry out the following exercises it is necessary to import a library (saprk.implicits)
+In order to carry out the following exercises it is necessary to import a library (spark.implicits)
 
 ```scala
 import spark.implicits._
