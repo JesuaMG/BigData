@@ -3,10 +3,9 @@ _____
 ## Unit 2
 
 ### Practices
-Linear Regression:
-> * [Practice #1]()
-Logistic Regression:
-> * [Practice #2]()
+
+> * Linear Regression: [Practice #1]()
+> * Logistic Regression: [Practice #2]()
 > * [Practice #3]()
 > * [Practice #4]()
 > * [Practice #5]()
