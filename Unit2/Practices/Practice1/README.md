@@ -21,12 +21,12 @@ val spark = SparkSession.builder().getOrCreate()
 val data = spark.read.option("header", "true").option("Clean-Ecommerce.csv")
 ```
 
-// 4. Print the schema in the DataFrame.
+4. Print the schema in the DataFrame.
 ``` scala
 data.printSchema()
 ```
 
-// 5. Print an example row from the DataFrame.
+5. Print an example row from the DataFrame.
 ``` scala
 data.head(1)
 ```
@@ -65,6 +65,8 @@ val assembler = new VectorAssembler().setInputCols(Array("Avg Area Income", "Avg
 5. Use the VectorAssembler object to convert the input columns of the df to a single output column of an array named "features". Set the input columns from where we are supposed to read the values. Call this new assambler. Use the assembler to transform our DataFrame to two columns: label and features
 ``` scala
 val assembler = new VectorAssembler().setInputCol(Array("Avg Area Income", "Avg Area House Age", "Avg Area Number of Rooms", "Avg Area Number of Bedrooms", "Area Population"))
+val output = assembler.transform(df).select($"label", $"features")
+output.show()
 ```
 
 6. Create an object for a linear regression model.

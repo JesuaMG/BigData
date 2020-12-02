@@ -14,7 +14,7 @@ import org.apache.spark.sql.SparkSession
 val spark = SparkSession.builder().getOrCreate()
 
 // 3. Use Spark for the Clean-Ecommerce csv file.
-val data = spark.read.option("header", "true").option("Clean-Ecommerce.csv")
+val data = spark.read.option("header", "true").option("inferSchema","true")csv("Clean-Ecommerce.csv")
 
 // 4. Print the schema in the DataFrame.
 data.printSchema()
@@ -55,6 +55,8 @@ val assembler = new VectorAssembler().setInputCols(Array("Avg Area Income", "Avg
 //    Call this new assambler.
 //    Use the assembler to transform our DataFrame to two columns: label and features
 val assembler = new VectorAssembler().setInputCol(Array("Avg Area Income", "Avg Area House Age", "Avg Area Number of Rooms", "Avg Area Number of Bedrooms", "Area Population"))
+val output = assembler.transform(df).select($"label", $"features")
+output.show()
 
 // 6. Create an object for a linear regression model.
 val lr = new LinearRegression().setMaxIter(100).setRegParam(0.3).setElasticNetParam(0.8)
