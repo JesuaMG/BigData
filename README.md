@@ -4,11 +4,14 @@ _____
 
 ### Practices
 
-> * Linear Regression: [Practice #1]()
+> * Linear Regression: [Practice #1](https://github.com/JesuaMG/BigData/blob/Unit_2/Unit2/Practices/Practice1/README.md)
 > * Logistic Regression: [Practice #2]()
-> * [Practice #3]()
-> * [Practice #4]()
-> * [Practice #5]()
+> * Basic Statistics: [Practice #3]()
+> * Decision tree classifier: [Practice #4]()
+> * Random forest classifier: [Practice #5]()
+> * Gradient-boosted tree classifier: [Practice #6]()
+> * Multilayer perceptron classifier: [Practice #7]()
+> * Linear Support Vector Machine: [Practice #8]()
 
 ### Evaluation
 > * [Evaluation Practice Unit 2]()
