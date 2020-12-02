@@ -67,7 +67,7 @@ println(s"Coefficients: ${lrModel.coefficients} Intercept: ${lrModel.intercept}"
 
 // 9. Summarize the model on the training set print the output of some metrics!
 //    Use our model's .summary method to create an object
-//    called trainingSummary
+//    called trainingSummary.
 val trainingSummary = lrModel.summary
 println(s"numIterations: ${trainingSummary.totalIterations}")
 println(s"objectiveHistory: ${trainingSummary.objectiveHistory.toList}")
