@@ -4,8 +4,8 @@ _____
 
 ### Practices
 
-> * Linear Regression: [Practice #1](https://github.com/JesuaMG/BigData/blob/Unit_2/Unit2/Practices/Practice1/README.md)
-> * Logistic Regression: [Practice #2]()
+> * Linear Regression: [Practice #1](https://github.com/JesuaMG/BigData/blob/Unit_2/Unit2/Practices/Practice1)
+> * Logistic Regression: [Practice #2](https://github.com/JesuaMG/BigData/tree/Unit_2/Unit2/Practices/Practice2)
 > * Basic Statistics: [Practice #3]()
 > * Decision tree classifier: [Practice #4]()
 > * Random forest classifier: [Practice #5]()
