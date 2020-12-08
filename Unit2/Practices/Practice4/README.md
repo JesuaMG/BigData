@@ -1,7 +1,6 @@
 # Practice #4
 ### DECISION TREE CLASSIFIER
 
-
 1. Import libs
 ```scala
 import org.apache.spark.ml.Pipeline
