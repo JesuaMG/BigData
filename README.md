@@ -13,7 +13,6 @@ _____
 > * Multilayer perceptron classifier: [Practice #7](https://github.com/JesuaMG/BigData/blob/Unit_2/Unit2/Practices/Practice7/README.md)
 > * Linear Support Vector Machine: [Practice #8](https://github.com/JesuaMG/BigData/blob/Unit_2/Unit2/Practices/Practice8/README.md)
 > * One vs Rest Classifier: [Practice #9](https://github.com/JesuaMG/BigData/blob/Unit_2/Unit2/Practices/Practice9/README.md)
-
 > * Naive Bayes: [Practice #10](https://github.com/JesuaMG/BigData/blob/Unit_2/Unit2/Practices/Practice10/README.md)
 
 ### Evaluation
