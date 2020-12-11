@@ -25,8 +25,6 @@
 // MultilayerPerceptronClassifier and MulticlassClassificationEvaluator are imported
 import org.apache.spark.ml.classification.MultilayerPerceptronClassifier
 import org.apache.spark.ml.evaluation.MulticlassClassificationEvaluator
-
-// Spark session is imported
 import org.apache.spark.sql.SparkSession
 
  // Creation of the MultilayerPerceptronClassifier object
