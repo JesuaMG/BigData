@@ -40,7 +40,8 @@ object ChiSquareTestExample {
       .getOrCreate()
     import spark.implicits._
 
-    // Declare a value of name data to which a sequence of dense vectors is assigned    val data = Seq(
+    // Declare a value of name data to which a sequence of dense vectors is assigned    
+    val data = Seq(
       (0.0, Vectors.dense(0.5, 10.0)),
       (0.0, Vectors.dense(1.5, 20.0)),
       (1.0, Vectors.dense(1.5, 30.0)),
@@ -51,7 +52,7 @@ object ChiSquareTestExample {
 
     // A new dataframe is created to which the data value is assigned in the label and features columns
        val df = data.toDF("label", "features")
-	// A chi value is created to which ChiSquare is applied through the libraries, to the data frame in its features and label columns
+	  // A chi value is created to which ChiSquare is applied through the libraries, to the data frame in its features and label columns
     val chi = ChiSquareTest.test(df, "features", "label").head 
     println(s"pValues = ${chi.getAs[Vector](0)}")
     println(s"degreesOfFreedom ${chi.getSeq[Int](1).mkString("[", ",", "]")}")
