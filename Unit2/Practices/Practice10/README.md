@@ -9,7 +9,7 @@ import org.apache.spark.ml.evaluation.MulticlassClassificationEvaluator
 
 2. Load the data saved in LIBSVM format as a DataFrame.
 ```scala
-val data = spark.read.format("libsvm").load("C:/Users/Sebas/Desktop/sample_libsvm_data.txt")
+val data = spark.read.format("libsvm").load("sample_libsvm_data.txt")
 data.show(2)
 ```
 
