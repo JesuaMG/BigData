@@ -10,6 +10,7 @@ object Evaluation {
   def main(): Unit = {
     val spark = SparkSession.builder.appName("Evaluation").getOrCreate()
 
+    // Use the Spark Mllib library the Machine Learning algorithm corresponding to multilayer perceptron
     val df = spark.read.option("header", "true").option("inferSchema","true")csv("iris.csv")
 
     // What are the column names?
@@ -54,6 +55,7 @@ object Evaluation {
     // The model is trained
     val model = trainer.fit(train)
 
+    // Print model results
     
 
     spark.stop()

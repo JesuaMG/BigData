@@ -16,7 +16,7 @@ _____
 > * Naive Bayes: [Practice #10](https://github.com/JesuaMG/BigData/blob/Unit_2/Unit2/Practices/Practice10)
 
 ### Evaluation
-> * [Evaluation Practice Unit 2]()
+> * [Evaluation Practice Unit 2](https://github.com/JesuaMG/BigData/tree/Unit_2/Unit2/Evaluation)
 
 - Hernandez Negrete Juan Carlos 16212021
 - Manzano Guzman Jesua 16212033
