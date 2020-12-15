@@ -18,7 +18,7 @@
 
 2. What are the column names?
 ```scala
-    df.columns
+df.columns
 ```
 
 3. How is the scheme?   
@@ -29,7 +29,7 @@
     
 4. Print the first 5 columns.
 ```scala
-    df.head(5)
+df.head(5)
 ```
 
 5. Use the describe () method to learn more about the data in the DataFrame.
@@ -41,8 +41,8 @@
 
 6. Make the relevant transformation for the categorical data which will be our labels to be classified.
 ```scala
-    val labelIndexer = new StringIndexer().setInputCol("species").setOutputCol("indexedLabel").fit(df)
-    val indexed = labelIndexer.transform(df).drop("species").withColumnRenamed("indexedLabel", "label")
+val labelIndexer = new StringIndexer().setInputCol("species").setOutputCol("indexedLabel").fit(df)
+val indexed = labelIndexer.transform(df).drop("species").withColumnRenamed("indexedLabel", "label")
     indexed.describe().show()
 ```
 
@@ -76,4 +76,5 @@
     
 8. Print model results
 ```scala
+val result = model.transform(test)
 ```
