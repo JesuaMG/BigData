@@ -76,5 +76,9 @@ val indexed = labelIndexer.transform(df).drop("species").withColumnRenamed("inde
     
 8. Print model results
 ```scala
-val result = model.transform(test)
+    val result = model.transform(test)
+    val predictionAndLabels = result.select("prediction", "label")
+    val evaluator = new MulticlassClassificationEvaluator().setMetricName("accuracy")
+    println(s"Test set accuracy = ${evaluator.evaluate(predictionAndLabels)}")
+    
 ```
