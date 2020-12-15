@@ -10,27 +10,29 @@ object Evaluation {
   def main(): Unit = {
     val spark = SparkSession.builder.appName("Evaluation").getOrCreate()
 
-    // Use the Spark Mllib library the Machine Learning algorithm corresponding to multilayer perceptron
+    // 1. Use the Spark Mllib library the Machine Learning algorithm corresponding to multilayer perceptron
     val df = spark.read.option("header", "true").option("inferSchema","true")csv("iris.csv")
 
-    // What are the column names?
+    // 2. What are the column names?
+    df.columns
 
-
-    // How is the scheme?     
+    // 3. How is the scheme?     
     val esquema = df.printSchema
     df.printSchema
     
-    // Print the first 5 columns.
+    // 4. Print the first 5 columns.
+    df.head(5)
 
-
-    // Use the describe () method to learn more about the data in the DataFrame.
+    // 5. Use the describe () method to learn more about the data in the DataFrame.
     val desc = df.describe().show()
     df.describe().show() 
 
-    //  Make the relevant transformation for the categorical data which will be our labels to be classified.
+    // 6. Make the relevant transformation for the categorical data which will be our labels to be classified.
+    val labelIndexer = new StringIndexer().setInputCol("species").setOutputCol("indexedLabel").fit(df)
+    val indexed = labelIndexer.transform(df).drop("species").withColumnRenamed("indexedLabel", "label")
+    indexed.describe().show()
 
-
-    // Build the classification model and explain its architecture.
+    // 7. Build the classification model and explain its architecture.
     
     // Data is divided into training (60%) and testing (30%)
     val splits = data.randomSplit(Array(0.6, 0.4), seed = 1234L)
@@ -55,8 +57,8 @@ object Evaluation {
     // The model is trained
     val model = trainer.fit(train)
 
-    // Print model results
-    
+    // 8. Print model results
+    val result = model.transform(test)
 
     spark.stop()
   }
