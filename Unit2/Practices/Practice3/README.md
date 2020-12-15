@@ -47,7 +47,12 @@
 #### Correlation Example
 1. Creating the main function 
     ```scala
-    
+  def main(args: Array[String]): Unit = {
+    val spark = SparkSession
+      .builder
+      .appName("CorrelationExample")
+      .getOrCreate()
+    import spark.implicits._
     ```
 2.  A value called data is created to which a sequence of vectors is assigned as value
     ```scala
