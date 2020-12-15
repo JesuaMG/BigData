@@ -34,8 +34,15 @@ object Evaluation {
 
     // 7. Build the classification model and explain its architecture.
     
+    val assembler = new VectorAssembler().setInputCols(Array("sepal_length","sepal_width","petal_length","petal_width")).setOutputCol("features")
+    val  features = assembler.transform(indexed)
+    val labelIndexer2 = new StringIndexer().setInputCol("label").setOutputCol("indexedLabel").fit(indexed)
+    println(s"Found labels: ${labelIndexer2.labels.mkString("[", ", ", "]")}")
+    
+    features.show
+
     // Data is divided into training (60%) and testing (30%)
-    val splits = data.randomSplit(Array(0.6, 0.4), seed = 1234L)
+    val splits = features.randomSplit(Array(0.6, 0.4), seed = 1234L)
     val train = splits(0)
     val test = splits(1)
 
@@ -48,18 +55,17 @@ object Evaluation {
     // Test set accuracy = 0.9803921568627451 (4, 9, 9, 3), (4, 7, 7, 3)
 
     // Training parameters are set
-    val trainer = new MultilayerPerceptronClassifier()
-      .setLayers(layers)
-      .setBlockSize(128)
-      .setSeed(1234L)
-      .setMaxIter(100)
+    val trainer = new MultilayerPerceptronClassifier().setLayers(layers).setBlockSize(128).setSeed(1234L).setMaxIter(100)
 
     // The model is trained
     val model = trainer.fit(train)
+    val result = model.transform(test)
 
     // 8. Print model results
-    val result = model.transform(test)
+
     val predictionAndLabels = result.select("prediction", "label")
+    predictionAndLabels.show()
+
     val evaluator = new MulticlassClassificationEvaluator().setMetricName("accuracy")
     println(s"Test set accuracy = ${evaluator.evaluate(predictionAndLabels)}")
     
