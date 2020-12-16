@@ -48,7 +48,7 @@ val indexed = labelIndexer.transform(df).drop("species").withColumnRenamed("inde
 
 7. Build the classification model and explain its architecture.
     
-    Data is divided into training (60%) and testing (30%)
+    Data is divided into training (60%) and testing (40%)
     ```scala
     val splits = data.randomSplit(Array(0.6, 0.4), seed = 1234L)
     val train = splits(0)
