@@ -6,7 +6,10 @@ val df = spark.read.option("header", "true").option("inferSchema","true")csv("Ne
 ```
 ## Number #1
 ### Start a simple Spark session.
-The entry point into all functionality in Spark is the SparkSession class. To create a basic SparkSession, just use ```SparkSession.builder(): ```
+The entry point into all functionality in Spark is the SparkSession class. To create a basic SparkSession, just use 
+```scala 
+SparkSession.builder():
+```
 
 ```scala
 
