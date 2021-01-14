@@ -1,4 +1,7 @@
 // Evaluation Unit 4
-// CLASSIFICATION
 
-// 1. 
+// - SVM
+// - Decision Three
+
+
+// - Logistic Regresion
