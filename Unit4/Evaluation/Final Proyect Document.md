@@ -383,13 +383,28 @@ spark.stop()
 ```
 
 ## Results
-
+Accuracy
+|  | **Accuracy** | **Test Error** |
+| --- | --- | --- |
+| SVM | 0.883770 | 0.116229 |
+| Decision Three | 0.891778 | 0.108221 |
+| Logistic Regression |  0.884833 | 0.115166 |
+| Multilayer Perceptron | 0.882923 | 0.117076 |
 
 ## Conclusions
-
+Compared to other units, this was somewhat simple, since, what was seen in class was applied and throughout the semester, the performance of each of them could be compared, which was the accuracy that gave us as a result, the matrix of confusion of some, and their error testing, the comparison is not very great but if we could notice the change in each of them, in summary, what was seen in the semester was applied with some practices already done and therefore, it was not so difficult to apply each of them.
+<br>
 ## References
 > Marks, R. J., Moulin, L. S., da Silva, A. A., & El-Sharkawi, M. A. (2001). Neural networks and support vector machines applied to power systems transient stability analysis. International journal of engineering intelligent systems for electrical engineering and communications, 9(4), 205-212.
 
 > Viera, Á. F. G. (2017). Técnicas de aprendizaje de máquina utilizadas para la minería de texto. Investigación bibliotecológica, 31(71), 103-126.
 
 > Sana, B., Siddiqui, I. F., & Arain, Q. A. (2019). Analyzing students’ academic performance through educational data mining.
+
+> Rumelhart, David E., Geoffrey E. Hinton, and R. J. Williams. Learning Internal Representations by Error Propagation". David E. Rumelhart, James L. McClelland Parallel distributed processing: Explorations in the microstructure of cognition, Volume 1: Foundation. MIT Press, 1986
+
+> Hastie, Trevor. Tibshirani, Robert. Friedman, Jerome. The Elements of Statistical Learning: Data Mining, Inference, and Prediction. Springer, New York, NY, 2009.
+
+> Haykin, Simon (1998). Neural Networks: A Comprehensive Foundation (2 ed.). Prentice Hall
+
+> R. Collobert and S. Bengio (2004). Links between Perceptrons, MLPs and SVMs. Proc. Int'l Conf. on Machine Learning (ICML).
