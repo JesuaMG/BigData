@@ -35,9 +35,13 @@
 - [Theoretical framework of algorithms](#theoretical-framework-of-algorithms)
   - [SVM](#svm)
   - [Decision Tree](#decision-tree)
+  - [Logistic Regression](#logistic-regression)
+  - [Multilayer Perceptron](#multilayer-perceptron)
 - [Implementation](#implementation)
   - [SVM (Support Vector Machine)](#svm-support-vector-machine)
   - [Decision Tree](#decision-tree-1)
+  - [Logistic Regression](#logistic-regression-1)
+  - [Multilayer Perceptron](#multilayer-perceptron-1)
 - [Results](#results)
 - [Conclusions](#conclusions)
 - [References](#references)
@@ -79,6 +83,41 @@ The strengths of decision tree methods are:
 - Decision trees perform classification without requiring much computation.
 - Decision trees are able to handle both continuous and categorical variables.
 - Decision trees provide a clear indication of which fields are most important for prediction or classification.
+
+
+### Logistic Regression
+<p align = "justify">
+Logistic Regression is a Machine Learning algorithm which is used for the classification problems, it is a predictive analysis algorithm and based on the concept of probability.<br>
+
+![ScreenShot](https://github.com/JuanCarlos-Negrete/practica_git_flow/blob/development/LR.jpeg)
+
+We can call a Logistic Regression a Linear Regression model but the Logistic Regression uses a more complex cost function, this cost function can be defined as the ‘Sigmoid function’ or also known as the ‘logistic function’ instead of a linear function. <br>
+The hypothesis of logistic regression tends it to limit the cost function between 0 and 1. Therefore linear functions fail to represent it as it can have a value greater than 1 or less than 0 which is not possible as per the hypothesis of logistic regression.<br>
+
+![ScreenShot](https://github.com/JuanCarlos-Negrete/practica_git_flow/blob/development/LR2.png)
+
+###### What is the Sigmoid Function?
+In order to map predicted values to probabilities, we use the Sigmoid function. The function maps any real value into another value between 0 and 1. In machine learning, we use sigmoid to map predictions to probabilities.
+
+![ScreenShot](https://github.com/JuanCarlos-Negrete/practica_git_flow/blob/development/LR3.png)
+
+### Multilayer Perceptron
+<p align = "justify">
+The perceptron is very useful for classifying data sets that are linearly separable.  They encounter serious limitations with data sets that do not conform to this pattern as discovered with the XOR problem.  The XOR problem shows that for any classification of four points that there exists a set that are not linearly separable.<br>
+The MultiLayer Perceptron (MLPs) breaks this restriction and classifies datasets which are not linearly separable.  They do this by using a more robust and complex architecture to learn regression and classification models for difficult datasets.<br>
+
+###### How does a multilayer perceptron work?
+The Perceptron consists of an input layer and an output layer which are fully connected.  MLPs have the same input and output layers but may have multiple hidden layers in between the aforementioned layers, as seen below.<br>
+
+![ScreenShot](https://github.com/JuanCarlos-Negrete/practica_git_flow/blob/development/MP.jpg)
+
+- The **input layer** consists of neurons that accept the input values. The output of these neurons is the same as that of the input predictors. The nodes in the input layer represent the input data. All other nodes map inputs to outputs by a linear combination of the inputs with the node weights w and the bias by applying an activation function. This can be written in matrix form for MLPC with K + 1 layers as follows: Input_Layer
+
+- The **hidden layers** are between the input and output layers. Typically, the number of hidden layers varies from one to many. It is the central calculation layer that has the functions that map the input to the output of a node. The nodes of the intermediate layers use the sigmoid (logistic) function, as follows Hidden_Layer
+
+- The **output layer** is the final layer of a neural network that returns the result to the user environment. Based on the design of a neural network, it also indicates to the previous layers how they have performed in learning information and, consequently, improved their functions. The nodes in the output layer use the softmax function. Output_Layer
+
+The number of nodes N, in the output layer, corresponds to the number of classes.
 
 ## Implementation
 
@@ -218,9 +257,133 @@ val evaluator = new MulticlassClassificationEvaluator().setLabelCol("indexedLabe
 val accuracy = evaluator.evaluate(predictions)
 println(s"Test Error = ${(1.0 - accuracy)}")
 ```
+### Logistic Regression
+Import the libraries, Errors are minimized, Spark session is created
+```scala
+import org.apache.spark.ml.classification.LogisticRegression
+import org.apache.spark.sql.SparkSession
+import org.apache.spark.ml.feature.{VectorAssembler, StringIndexer, VectorIndexer, OneHotEncoder}
+import org.apache.spark.ml.linalg.Vectors
+import org.apache.spark.mllib.evaluation.MulticlassMetrics
 
+import org.apache.log4j._
+Logger.getLogger("org").setLevel(Level.ERROR)
+
+val spark = SparkSession.builder().getOrCreate()
+```
+
+The dataframe is created with the CSV bank-full, Index labels, adding metadata to the label column, fit on whole dataset to include all labels in index.
+```scala
+val data = spark.read.option("header","true").option("inferSchema", "true").option("delimiter",";").format("csv").load("bank-full.csv")
+val labelIndexer = new StringIndexer().setInputCol("y").setOutputCol("indexedLabel").fit(data)
+val indexed = labelIndexer.transform(data).drop("y").withColumnRenamed("indexedLabel", "label")
+```
+
+The vector is created to add the fields to the array, Transformed into a new indexed variable and The label of the features field is renamed
+```scala
+val vectorFeatures = (new VectorAssembler().setInputCols(Array("balance","day","duration","pdays","previous")).setOutputCol("features"))
+val features = vectorFeatures.transform(indexed)
+val featuresLabel = features.withColumnRenamed("y", "label")
+```
+
+A new variable is created by selecting some fields, Use randomSplit to create 70/30 split test and train data, The Logistic Regression is created with the parameters sent, The logistic model is trained
+```scala
+val dataIndexed = featuresLabel.select("label","features")
+val Array(training, test) = dataIndexed.randomSplit(Array(0.7, 0.3), seed = 12345)
+val logisticAlgorithm = new LogisticRegression().setMaxIter(10).setRegParam(0.3).setElasticNetParam(0.8).setFamily("multinomial")
+val logisticModel = logisticAlgorithm.fit(training)
+```
+
+The precision of the test data is calculated
+```scala
+val results = logisticModel.transform(test)
+val predictionAndLabels = results.select($"prediction",$"label").as[(Double, Double)].rdd
+val metrics = new MulticlassMetrics(predictionAndLabels)
+println("Confusion matrix:")
+println(metrics.confusionMatrix)
+```
+
+Accuracy and error test is printed
+```scala
+println("Accuracy: "+metrics.accuracy) 
+println(s"Test Error = ${(1.0 - metrics.accuracy)}")
+```
+
+### Multilayer Perceptron
+Import the libraries, Errors are minimized, Spark session is created
+```scala
+import org.apache.spark.ml.classification.MultilayerPerceptronClassifier
+import org.apache.spark.ml.evaluation.MulticlassClassificationEvaluator
+import org.apache.spark.sql.SparkSession
+import org.apache.spark.ml.feature.StringIndexer 
+import org.apache.spark.ml.feature.VectorAssembler
+import org.apache.spark.sql.types.IntegerType
+
+import org.apache.log4j._
+Logger.getLogger("org").setLevel(Level.ERROR)
+
+val spark = SparkSession.builder.appName("MultilayerPerceptronClassifierExample").getOrCreate()
+```
+
+The dataframe is created with the CSV bank-full, The data is displayed
+```scala
+val dataframeMP  = spark.read.option("header","true").option("inferSchema", "true").option("delimiter",";").format("csv").load("bank-full.csv")
+
+dataframeMP.columns 
+dataframeMP.printSchema() 
+dataframeMP.head(5) 
+dataframeMP.describe().show() 
+```
+
+Index labels, adding metadata to the label column, fit on whole dataset to include all labels in index, The assemble vector is created with the mentioned fields
+```scala
+val labelIndexer = new StringIndexer().setInputCol("y").setOutputCol("indexedLabel").fit(dataframeMP)
+val indexed = labelIndexer.transform(dataframeMP).drop("y").withColumnRenamed("indexedLabel", "label")
+indexed.describe().show() 
+
+val assembler = new VectorAssembler().setInputCols(Array("balance","day","duration","pdays","previous")).setOutputCol("features")
+val features = assembler.transform(indexed)
+```
+
+The label columns are indexed and the data is displayed
+```scala
+val labelIndexer = new StringIndexer().setInputCol("label").setOutputCol("indexedLabel").fit(indexed)
+println(s"Found labels: ${labelIndexer.labels.mkString("[", ", ", "]")}")
+features.show()
+```
+
+Data is divided into training and testing, The layers of the neural network are specified
+```scala
+val splits = features.randomSplit(Array(0.6, 0.4), seed = 1234L)
+val train = splits(0)
+val test = splits(1)
+
+val layers = Array[Int](5, 4, 1, 2)
+```
+
+Training parameters are set
+```scala
+val trainer = new MultilayerPerceptronClassifier().setLayers(layers).setBlockSize(128).setSeed(1234L).setMaxIter(100)
+```
+
+The model is trained
+```scala
+val model = trainer.fit(train)
+```
+The precision of the test data is calculated
+```scala
+val result = model.transform(test)
+val predictionAndLabels = result.select("prediction", "label")
+predictionAndLabels.show
+val evaluator = new MulticlassClassificationEvaluator().setMetricName("accuracy")
+
+println(s"Test Accuracy = ${evaluator.evaluate(predictionAndLabels)}")
+println(s"Test Error = ${(1.0 - evaluator.evaluate(predictionAndLabels))}")
+spark.stop()
+```
 
 ## Results
+
 
 ## Conclusions
 
